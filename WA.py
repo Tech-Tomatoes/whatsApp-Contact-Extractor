@@ -6,21 +6,23 @@ from requests import get
 from selenium.webdriver.chrome.options import Options
 import time, os
 
-from_file = open('from_file.txt', 'r+')
+from_file = open('from_file.txt', 'r+')      
 groups = []
 group_name = from_file.read().split('\n')
-
+column = 1
+chromedriver = "C:\Python27"
+os.environ["webdriver.chrome.driver"] = chromedriver
+url = "https://web.whatsapp.com/"
 driver = webdriver.Chrome()
-driver.get("https://web.whatsapp.com")
+driver.get(url)
+response = get(url)
+
 inp_xpath_search = "//*[@class='_2_1wd copyable-text selectable-text']"
 input_box_search = WebDriverWait(driver,50).until(lambda driver: driver.find_element_by_xpath(inp_xpath_search))
 input_box_search.click()
 
-print("\n \n \n Hello!")
-print("YOUR WHATSAPP WEB IS OPEN ... ")
-print("Groups from which the contacts are supposed to be extracted:   ")
-print(group_name)
-print("\n")
+print("*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*")
+print("\n Hello!\n >>>>>>>>>>>....YOUR WhatsApp WEB IS OPEN.... <<<<<<<<<<<<<\n THE GROUP YOU'VE SELECTED IS:\n ",group_name, "\n")
 for target in group_name:
     input_box_search.send_keys(target)
     selected_target = driver.find_element_by_xpath("//span[@title='"+target+"']")
