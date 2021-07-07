@@ -6,18 +6,12 @@ from requests import get
 from selenium.webdriver.chrome.options import Options
 import time, os
 
-
-from_file = open('from_file.txt', 'r+')      
+from_file = open('from_file.txt', 'r+')
 groups = []
 group_name = from_file.read().split('\n')
-column = 1
-chromedriver = "C:\Python27"
-os.environ["webdriver.chrome.driver"] = chromedriver
-url = "https://web.whatsapp.com/"
-driver = webdriver.Chrome()
-driver.get(url)
-response = get(url)
 
+driver = webdriver.Chrome()
+driver.get("https://web.whatsapp.com")
 inp_xpath_search = "//*[@class='_2_1wd copyable-text selectable-text']"
 input_box_search = WebDriverWait(driver,50).until(lambda driver: driver.find_element_by_xpath(inp_xpath_search))
 input_box_search.click()
@@ -36,6 +30,5 @@ for target in group_name:
     time.sleep(10)
     input_box = WebDriverWait(driver,50).until(lambda driver:driver.find_element_by_xpath(inp_xpath))
 print(input_box.text)
-
-    
+ 
 driver.quit()
