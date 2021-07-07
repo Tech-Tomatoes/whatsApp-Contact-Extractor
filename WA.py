@@ -6,8 +6,8 @@ from requests import get
 from selenium.webdriver.chrome.options import Options
 import time, os
 
-from_file = open('from_file.txt', 'r+')             
 
+from_file = open('from_file.txt', 'r+')      
 groups = []
 group_name = from_file.read().split('\n')
 column = 1
@@ -35,14 +35,7 @@ for target in group_name:
     inp_xpath = '//span[@class="_7yrSq _3-8er selectable-text copyable-text"]'
     time.sleep(10)
     input_box = WebDriverWait(driver,50).until(lambda driver:driver.find_element_by_xpath(inp_xpath))
-    
-    
-input_box_search.send_keys(target)
-selected_target = driver.find_element_by_xpath("//span[@title='"+target+"']")
-selected_target.click()
-inp_xpath = '//span[@class="_7yrSq _3-8er selectable-text copyable-text"]'
-time.sleep(10)
-input_box = WebDriverWait(driver,50).until(lambda driver:driver.find_element_by_xpath(inp_xpath))
 print(input_box.text)
 
+    
 driver.quit()
