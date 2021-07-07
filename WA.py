@@ -6,8 +6,7 @@ from requests import get
 from selenium.webdriver.chrome.options import Options
 import time, os
 
-from_file = open('from_file.txt', 'r+')        
-to_file = open('contact_file.txt', 'a+')           
+from_file = open('from_file.txt', 'r+')             
 
 groups = []
 group_name = from_file.read().split('\n')
